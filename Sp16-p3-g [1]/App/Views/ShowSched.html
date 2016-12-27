@@ -1,0 +1,177 @@
+﻿
+<div ng-controller="showAddCtrl as showAddCtrl">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4>Show Times:</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table-striped">
+                <thead class="panel-heading">
+
+                    <tr>
+                        <th>
+                            Movie
+                        </th>
+                        <th>
+                            Movie Length
+                        </th>
+                        <th>
+                            Start Time
+                        </th>
+                        <th>
+                            Show Date
+                        </th>
+                        <th>
+                            Available Seats
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Auditorium
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="orgShow in showAddCtrl.shows" ng-model="orgShow">
+                        <td ng-model="show.MovieName">
+                            {{orgShow.MovieName}}
+                        </td>
+                        <td ng-model="show.MovieLength">
+                            {{orgShow.MovieLength | date : shortTime}}
+                        </td>
+                        <td ng-repeat="showT in orgShow.ShowTimes" ng-model="orgShow.StartTime">
+                            {{showT.StartTime | date : shortTime}}
+                        </td>
+                        <td ng-model="show.ShowDate">
+                            {{showT.ShowDate}}SD
+                        </td>
+                        <td ng-model="show.TotalSeats">
+                            {{showT.TotalSeats}}TS
+                        </td>
+                        <td ng-model="show.Price">
+                            {{showT.Price | currency}}P
+                        </td>
+                        <td ng-repeat="aud in show.ShowTimes.Auditorium" ng-model="aud.Auditorium">
+                            {{aud.AuditoriumName}}
+                        </td>
+                        <td>
+                            <button ng-click="showAddCtrl.addPostShow(movie)" type="button" class="btn btn-success  glyphicon glyphicon-plus"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+
+<div class="panel panel-warning" style="background:#e3eaef;border:1.3px solid #000000;">
+    <div class="panel-heading" style="border:.6px thin #000000;">
+        <div class="panel-title" style="border:.6px thin #000000;">
+            <h4>Show Time Details:</h4>
+        </div>
+    </div>
+    <div class="panel-body" style="border:1px thin #000000;">
+        <div class="col-md-8">
+            <form>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Movie Title:</label>
+                        <input type="text" class="form-control" value="{{movie.title}}">
+                    </div>
+                        <div class="form-group">
+                            <label>Length</label>
+                            <input type="text" class="form-control" value="{{movie.length}}">
+                        </div>
+
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <select class='form-control' ng-model="Rating">
+                            <option value="G">G</option>
+                            <option value="PG">PG</option>
+                            <option value="PG-13">PG-13</option>
+                            <option value="R">R</option>
+                            <option value="M">M</option>
+                            <option value="NR">Not Rated</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Genre:</label>
+                        <select class='form-control' ng-model="Genre">
+                            <option value="Kids">Kids</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Action">Action</option>
+                            <option value="Romantic">Romantic</option>
+                            <option value="Comedy">Comedy</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+
+                    <div class="form-group">
+                        <label for="name">Poster URL</label>
+                        <input type="text" class="form-control" value="{{movie.poster_path}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Release Date</label>
+                        <input type="text" class="form-control" id="contact_person" name="contact_person" value="{{movie.release_date | date: shortTime}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Adult Price</label>
+                        <input type="text" class="form-control" id="postal_address" name="postal_address" value="{{movie.AdultPrice}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Senior Price</label>
+                        <input type="text" class="form-control" id="physical_address" name="physical_address" value="{{movie.SeniorPrice}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Child Price</label>
+                        <input type="text" class="form-control" id="physical_address" name="physical_address" value="{{movie.ChildPrice}}">
+                    </div>
+
+                    <button type="submit" class="btn btn-info">Submit</button>
+                  </div>
+                <div class="col-md-5">
+
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+</form>
+        </div>
+
+        <div class="col-md-4" ng-controller="movieCtrl as movieCtrl">
+            <div class="panel panel-warning" style="border:1px solid #000000;">
+                <div class="panel-heading" style="border:.6px thin #000000;">
+                    <div class="panel-title" style="border:1px thin #000000;">
+                        <h4>Theater Info:</h4>
+                        <select ng-model="dateSearch" ng-init="dateSearch = 24" class="form-control">
+                            <option ng-init="dateSearch = 22" value="26"> April 26, 2016</option>
+                            <option value="27">April 27, 2016</option>
+                            <option value="28">April 28, 2016</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="panel-body" ng-repeat="movie in movieCtrl.movies" style="border:.6px thin #000000;">
+                    <table class="table-responsive col-md-5" ng-repeat="show in movie.ShowTimes | filter:dateSearch | orderBy:'ShowDate' ">
+                        <tr><h7><td><h8><b>{{show.Auditorium.AuditoriumName}}</b></h8></td></h7></tr>
+                        <tr ><h7><td><h8><i>{{show.StartTime| date:shortDate}}</i></h8></td></h7></tr>
+                        <tr><h7><td><h8><i>{{show.ShowDate | date:shortDate}}</i></h8></td></h7></tr>
+                        <tr><td><hr style="border: 1px dotted #000000;"></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

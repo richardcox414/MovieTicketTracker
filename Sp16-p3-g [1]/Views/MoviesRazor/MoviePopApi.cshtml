@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "MoviePopApi";
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+    <script src="~/Scripts/ng-infinite-scroll.js"></script>
+    <script src="~/Scripts/Angular/adminApp.js"></script>
+    <script src="~/Scripts/Angular/adminCtrl.js"></script>
+    <script src="~/Scripts/Angular/adminService.js"></script>
+
+}
+
+
+<div ng-app="adminApp" class="row">
+
+    <div ng-controller="adminCtrl as adminCtrl">
+        <br /><br />
+        <div class="alert alert-danger alert-dismissable box-shadow--16dp" style="border:1px thin #000000;">
+            <a class="panel-close close" data-dismiss="alert">×</a>
+            When desired movie is found, click add to save movie with details to the database. Next, show's can be added/edited with the new movie.
+        </div>
+        <br />
+        <div class="panel panel-info box-shadow--16dp" style="background:#ffffff;border:1.3px solid #000000;">
+            <div class="panel-heading box-shadow--16dp" style="border:1px thin #000000;">
+                <div class="panel-title">
+                    <h3><center><font color="black">Popular Movies</font></center></h3>
+                    <a class="btn btn-warning box-shadow--16dp" href="http://localhost:53449/MoviesRazor/MovieApi"><font color="white">Now Playing</font></a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered box-shadow--16dp">
+                    <thead class="panel-heading">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Release Date
+                            </th>
+                            <th>
+                                Length
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="border:1px thin #000000;">
+                        <tr ng-repeat="movie in adminCtrl.popList | orderBy:'title'" ng-model="movie">
+                            <td ng-model="movie.title">
+                                {{movie.title}}
+                            </td>
+                            <td>
+                                {{movie.release_date | date : shortDate}}
+                            </td>
+                            <td>
+                                {{movie.length}} ??
+                            </td>
+                            <td>
+                                <button ng-click="adminCtrl.addToInventory(movie)" type="button" style="padding: 12px, 10px, 12px" class="btn btn-success glyphicon glyphicon-plus"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tr id="popUp" class="alert alert-info" ng-show="detail">
+                        <td>
+                            <h7>
+                                {{movie.overview}}
+                                <button ng-click="detail=false" type="button" class="btn btn-success glyphicon glyphicon-dashboard box-shadow--6dp">Info</button>
+                            </h7>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <button ng-click="adminCtrl.getPopList()" ng-hide="adminCtrl.popList.length == 0">get more movies</button>
+            <p ng-show="adminCtrl.popList.length == 0">loading movies</p>
+            <button ng-click="adminCtrl.getMovieList()" ng-hide="adminCtrl.movieList.length == 0">get more movies</button>
+            <p ng-show="adminCtrl.movieList.length == 0">loading movies</p>
+        </div>
+    </div>
+
+</div>
+

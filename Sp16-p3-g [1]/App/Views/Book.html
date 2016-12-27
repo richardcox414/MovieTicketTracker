@@ -1,0 +1,160 @@
+﻿<br /><br />
+<!--##########################################################################################################################################################################################################-->
+<div class="panel panel-warning box-shadow--6dp" style="background:#e3eaef;border:1.3px solid #000000;" ng-controller="CartCtrl as cartCtrl">
+    <div class="panel-heading box-shadow--16dp" style="border:.6px thin #000000;">
+        <div class="panel-title">
+            <h4>Book Tickets</h4>
+            <div class="alert alert-danger" ng-show="cartCtrl.shows.length == 0">
+                There are no movies in your bookings. <a href="#/" class="alert-link">
+                    Click here to return to the movies list
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body box-shadow--6dp" style="border:1px thin #000000;" ng-repeat="show in cartCtrl.shows">
+        <div class="col-md-12">
+            <div class="container box-shadow--16dp">
+                <div class="row" style="background:#ffffff;border:1.3px solid #000000;">
+                    <div class="">
+                        <div class="media col-md-4">
+                            <div class="pull-left">
+                                <img src="{{show.Movie.MovieImageUrl}}" height="350" width="280" style="padding-left:.4px;padding-bottom:7.5px;padding-top:7.5px;">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <center><h3><b>{{show.Movie.MovieName}}({{show.Movie.MovieRating}})</b></h3><p>{{show.Movie.Genre.GenreName}} | Length: {{show.Movie.MovieLength| date:shortDate}}</p></center>
+                            <hr style="outline:.6px thin #000000;" />
+                            <p>
+                                <h4>{{show.Movie.MovieSynopsis}}</h4>
+                            </p>
+                            <hr style="outline:.6px thin #000000;" />
+                        </div>
+                        <div class="col-md-8">
+                            <p><h4><b>{{show.Auditorium.Theater.TheaterName}} Multi-Plex</b></h4></p>
+                            <p><h4><b>{{show.Auditorium.AuditoriumName}} | {{show.ShowDate | date:shortDate}} | {{show.StartTime | date: 'hh:mm:ss a'}}</b></h4></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <div class="col-md-4">
+                <div class="panel panel-warning box-shadow--16dp" style="border:1px solid #000000;">
+                    <div class="panel-heading box-shadow--16dp" style="border:.6px thin #000000;">
+                        <div class="panel-title"><h4>Tickets</h4></div>
+                    </div>
+                    <div class="panel-body box-shadow--16dp" style="border:.6px thin #000000;">
+                        <table class="table-responsive box-shadow--16dp">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Type:</th>
+                                        <th>
+                                            Quantity:
+                                        </th>
+                                        <th>
+                                            Price:
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        Adult:
+                                    </td>
+                                    <td class="text-left">
+                                        <input width="3" type="number" value="1" min="0" mmax="" class="input-sm" ng-model="show.AdultQuantity" ng-init="show.AdultQuantity = 0" />
+                                    </td>
+                                    <td>
+                                        <i>x {{show.Movie.AdultPrice | currency}}</i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Senior:
+                                    </td>
+                                    <td class="text-left">
+                                        <input width="3" type="number" value="1" min="0" mmax="" class="input-sm" ng-model="show.SeniorQuantity" ng-init="show.SeniorQuantity = 0" />
+                                    </td>
+                                    <td>
+                                        <i>x {{show.Movie.SeniorPrice | currency}}</i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        Child:
+                                    </td>
+                                    <td>
+                                        <input width="3" type="number" value="1" min="0" mmax="" class="input-sm" ng-model="show.ChildQuantity" ng-init="show.ChildQuantity = 0" />
+                                    </td>
+                                    <td><i>x {{show.Movie.ChildPrice | currency}}</i></td>
+                                </tr>
+                                <tr>
+                                    <td><hr /></td>
+                                    <td><hr /></td>
+                                    <td><hr /></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">
+                                        <b>Total:</b>
+                                    </td>
+                                    <td class="text-left" ng-model="show.TotalAmount">
+                                        <b>{{cartCtrl.getTotal() | currency}}</b>
+                                    </td>
+                                    <td class="text-center">
+                                        <b>Seats:</b>
+                                    </td>
+                                    <td class="text-left" ng-model="show.seatSold">
+                                        <b>{{cartCtrl.getQty()}}</b>
+                                    </td>
+                                </tr>
+                            </table>
+                            <tr><td><hr style="border: 1px dotted #000000;"></td></tr>
+                        </table>
+                        <div class="text-center">
+                            <a href="" button id="checkout" class="btn btn-success pull-left box-shadow--16dp" ui-sref="cart" ng-click="showme=true" ng-disabled="cartCtrl.movies.length == 0"> Checkout&nbsp;<i class="glyphicon glyphicon-thumbs-up"></i></a>
+                            <button class="btn btn-md btn-danger pull-right box-shadow--16dp" role="button" type="button" ng-click="cartCtrl.removeMovie($index)">Clear Cart</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+        </div>
+        <div ng-show="showme" class="" id="wrap">
+            <div class="col-md-7">
+                <div class="panel panel-info box-shadow--16dp" style="border:1px solid #000000;">
+                    <div class="panel-heading box-shadow--16dp" style="border:.6px thin #000000;">
+                        <div class="panel-title"><h4>Details</h4></div>
+                    </div>
+                    <br />
+                    <center>
+                        <qrcode ng-model="qrCode" data="Theater:{{show.Auditorium.Theater.TheaterName}} Auditorium:{{show.Auditorium.AuditoriumName}} Seats:{{cartCtrl.getQty()}} SeatSold:{{show.seatSold}}" size="333"></qrcode>
+                        <h5>Scan Qr Code for blah blah</h5>
+
+                    </center>
+                    <div class="panel-body box-shadow--16dp" style="border:.6px thin #000000;">
+                        <div class="form-group" id="yah">
+                            <form name="sale">
+                                <br /><br />
+                                <p>{{show.Auditorium.Theater.TheaterName}} Auditorium:{{show.Auditorium.AuditoriumName}} Date:{{show.ShowDate}} Start:{{show.StartTime}} Total:{{cartCtrl.getTotal()}} SeatSold:{{show.seatSold}} Seats:{{cartCtrl.getQty()}}</p>
+                                <p>
+                                   <b>Enter E-Mail to complete checkout:</b>
+                                    <input type="email" name="email" placeholder="Enter E-Mail to complete checkout Ticket details will be sent to your e-mail" class="form-control" id="email" ng-model="email" required />
+
+                                </p>
+                                <hr style="border: 1px dotted #000000;">
+                                <center>
+                                    <a href="" class="btn btn-success box-shadow--16dp" ng-click="cartCtrl.addSale(cartCtrl.shows, email, qrCode); done=true" ng-disabled="sale.$invalid">Complete&nbsp;<i class="glyphicon glyphicon-share-alt"></i></a>
+                                </center>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

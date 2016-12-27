@@ -1,0 +1,57 @@
+﻿<div ng-controller="adminCtrl as adminCtrl">
+    <div class="alert alert-danger alert-dismissable" style="border:1px thin #000000;">
+        <a class="panel-close close" data-dismiss="alert">×</a>
+        When desired movie is found, click add which will allow for editing before posting.
+    </div>
+    <div class="panel panel-info" style="background:#e3eaef;border:1.3px solid #000000;">
+        <div class="panel-heading" style="border:1px thin #000000;">
+            <div class="panel-title">
+                <h4>Available Movies</h4>
+                </div>
+            </div>
+        <div class="table-responsive">
+            <table class="table-striped">
+                <thead class="panel-heading" >
+                    <tr>
+                        <th class="text-left">
+                            Name
+                        </th>
+                        <th class="text-left">
+                            Release Date
+                        </th>
+                        <th class="text-left">
+                            Length
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="border:1px thin #000000;">
+                    <tr ng-repeat="movie in adminCtrl.movieList | orderBy:'title'" ng-model="movie">
+                        <td class="text-left" ng-model="movie.title">
+                            {{movie.title}}
+                        </td>
+                        <td class="text-left">
+                            {{movie.release_date}}
+                        </td>
+                        <td class="text-left">
+                            {{movie.length}}
+                        </td>
+                        <td>
+                            <button ng-click="adminCtrl.addToInventory(movie)" type="button" style="padding: 12px, 10px, 12px" class="btn btn-success glyphicon glyphicon-plus"></button>
+                            <!--<a href="" button id="info" class="btn btn-default" ui-sref="info" ng-click="showme=true">Detail&nbsp;<i class="glyphicon glyphicon-hand-down"></i></a>-->
+                        </td>
+                    </tr>
+                </tbody>
+                <tr id="popUp" class="alert alert-info" ng-show="detail">
+                       <td>
+                    <h7>
+                          {{movie.overview}}
+                        <button ng-click="detail=false" type="button" class="btn btn-success glyphicon glyphicon-dashboard">Info</button>
+                     </h7>
+                  </td>
+             </tr>
+            </table>
+            <button ng-click="admminCtrl.getMovieList()"></button>
+            <p ng-show="movieList.length == 0">loading movies</p>
+        </div>
+    </div>
+ </div>

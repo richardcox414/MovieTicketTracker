@@ -1,0 +1,28 @@
+﻿<div class="container" ng-controller="SaleCtrl  as saleCtrl  ">
+    <div table class="table">
+        <h2>Admin Portal</h2>
+        <div ng-repeat="item in saleCtrl.items">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sale ID</th>
+                        <th>Price</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Manufactuer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="success">
+                        <td>{{item.ID}}</td>
+                        <td>{{item.TotalAmount | currency}}</td>
+                        <td>{{item.EmailAddress}}</td>
+                        <td>{{item.Date}}</td>
+                        <td>{{item.Manufacturer.Name}}</td>
+                        <td><button ng-click="cartCtrl.removeItem($index)" class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

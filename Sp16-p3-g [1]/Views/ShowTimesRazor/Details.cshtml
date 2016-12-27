@@ -1,0 +1,65 @@
+﻿@model Sp16_p3_g__1_.Models.ShowTime
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Show Time Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketsSold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketsSold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAvailable)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to Show Times", "Index")
+</p>

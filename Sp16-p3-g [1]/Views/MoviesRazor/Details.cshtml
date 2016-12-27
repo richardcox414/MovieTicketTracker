@@ -1,0 +1,38 @@
+﻿@model Sp16_p3_g__1_.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Movie Details</h2>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a class="btn btn-warning" href="http://localhost:53449/MoviesRazor">Back</a>
+</p>
+<div class="responsive">
+    <table class="table table-bordered box-shadow--6dp">
+        <tbody>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.MovieName)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.MovieLength)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.AdultPrice)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.SeniorPrice)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.ChildPrice)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.MovieRating)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.MovieImageUrl)</b></td>
+                <td><b>@Html.DisplayNameFor(model => model.MovieSynopsis)</b></td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.MovieName)</td>
+                <td>@Html.DisplayFor(model => model.MovieLength)</td>
+                <td>@Html.DisplayFor(model => model.AdultPrice)</td>
+                <td>@Html.DisplayFor(model => model.SeniorPrice)</td>
+                <td>@Html.DisplayFor(model => model.ChildPrice)</td>
+                <td>@Html.DisplayFor(model => model.MovieRating)</td>
+               <td> @Html.DisplayFor(model => model.MovieImageUrl)</td>
+                <td>@Html.DisplayFor(model => model.MovieSynopsis)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

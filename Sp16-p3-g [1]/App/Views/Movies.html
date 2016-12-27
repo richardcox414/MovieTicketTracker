@@ -1,0 +1,59 @@
+﻿
+<div class="panel panel-warning box-shadow--16dp" style="background:#e3eaef;border:1.3px solid #000000;">
+    <div class="panel-heading box-shadow--16dp" style="border:.6px thin #000000;">
+        <div class="panel-title" style="border:.6px thin #000000;">
+            <h4>Playing Now:</h4>
+            <select ng-model="dateSearch" ng-init="dateSearch = 1" class="form-control box-shadow--8dp">
+                <option ng-init="dateSearch = 22" value="1"> May 1, 2016</option>
+                <option value="2">May 2, 2016</option>
+                <option value="3">May 3, 2016</option>
+            </select>
+        </div>
+    </div>
+    <div class="panel-body box-shadow--16dp" style="border:1px thin #000000;">
+        <div class="col-md-9 ">
+            <div class="container box-shadow--16dp" ng-controller="movieCtrl as movieCtrl">
+                <div class="row" ng-repeat="movie in movieCtrl.movies | filter:dateSearch | filter:pickedTime" style="background:#ffffff;border:1.3px solid #000000;padding-left:.2px;padding-bottom:10px;padding-top:10px;">
+                    <div class="">
+                        <div class="media col-md-3 box-shadow--2p">
+                            <div class="pull-left">
+                                <img src="{{movie.MovieImageUrl}}" height="250" width="180">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <center><h4><b>{{movie.MovieName}}</b></h4></center><hr style="outline:.6px thin #000000;" />
+                            <p>
+                                {{movie.MovieSynopsis | limitTo: 121}}...
+                            </p>
+                            <p><b>{{movie.Genre.GenreName}} | {{movie.MovieRating}}</b></p>
+                        </div>
+                        <div class="col-md-9">
+                            <hr style="outline:.6px thin #000000;" />
+                            <div class="col-xs-9 col-sm-8 col-md-3" ng-repeat="show in movie.ShowTimes | orderBy:'ShowDate' | filter:dateSearch | filter:pickedTime">
+                                <p>
+                                    <a href="#book" class="btn btn-md btn-info box-shadow--16dp" role="button" type="button" ng-click="movieCtrl.addToCart(show)">{{show.StartTime| date:'hh:mm:ss a'}}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 ">
+            <div class="panel panel-warning box-shadow--16" style="border:1px solid #000000;">
+                <div class="panel-heading box-shadow--16dp" style="border:.6px thin #000000;">
+                    <div class="panel-title" style="border:1px thin #000000;"><h4>Coming Soon:</h4></div>
+                </div>
+                <div class="panel-body" ng-controller="upcomeCtrl as upcomeCtrl" style="border:.6px thin #000000;">
+                    <table class="table-responsive" ng-repeat="upcome in upcomeCtrl.movieList">
+                        <tr><h7><td><h8><b>{{upcome.title | limitTo: 35}}</b></h8></td></h7></tr>
+                        <tr><h7><td><h8><i>{{upcome.release_date | limitTo: 15| date:shortDate}}</i></h8></td></h7></tr>
+                        <tr><td><hr style="border: 1px dotted #000000;"></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

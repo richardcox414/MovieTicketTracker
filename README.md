@@ -1,85 +1,87 @@
-Online Movie Ticket Booking Web Site
-Using AngularJS, Web API, MVC, Bootstrap, Code First, EF
-This is a school project - still not 100% complete. Always hard to revisit school projects from some reason.
-Xamarin done by Lance & Robert
-# # Requirements Specification # #
-2. Admins
-    a. Create
-    b. Manage theaters through a management portal
+# Online Movie Ticket Booking Web Site
+ - Using AngularJS, Web API, MVC, Bootstrap, Code First, EF
+ - This is a school project - still not 100% complete. Always hard to revisit school projects from some reason.
+ - Xamarin done by Lance & Robert
 
-3. Movies are pulled in from OMDb API at time of movie scheduling
 
-4. Movies show in different theaters at different times
+## # # Requirements Specification # # ##
+    2. Admins
+        a. Create
+        b. Manage theaters through a management portal
 
-5. Managers AND admins can:
-    a. Create
-    b. Manage theater schedules
+    3. Movies are pulled in from OMDb API at time of movie scheduling
 
-6. Management of
-    a. Seating
-    b. Theaters
-    c. ShowTimes
-    are done on a web based portal that should be responsive
+    4. Movies show in different theaters at different times
 
-7. Theaters can play any movies that can fit during open hours
+    5. Managers AND admins can:
+        a. Create
+        b. Manage theater schedules
 
-8. Customers approach a kiosk at the front to purchase tickets
+    6. Management of
+        a. Seating
+        b. Theaters
+        c. ShowTimes
+        are done on a web based portal that should be responsive
 
-9. Customers select a
-    a. Movie
-    b. ShowTime
-    from available options
+    7. Theaters can play any movies that can fit during open hours
 
-10. Customer can select a number of
-    a. Child
-    b. Adult
-    c. Senior tickets
+    8. Customers approach a kiosk at the front to purchase tickets
 
-11. Prices are configurable by Admins
+    9. Customers select a
+        a. Movie
+        b. ShowTime
+        from available options
 
-12. Prices are the same for all movies
+    10. Customer can select a number of
+        a. Child
+        b. Adult
+        c. Senior tickets
 
-13. Prices for showings before noon have a different price (matinee)
+    11. Prices are configurable by Admins
 
-14. If the layout has 50 seats, then only 50 tickets for that ShowTime should be sold in total
+    12. Prices are the same for all movies
 
-15. After selecting seats, assume that the customer is able to provide payment, and prompt them
-for an optional email for a receipt
+    13. Prices for showings before noon have a different price (matinee)
 
-16. On screen, display a:
-    a. Confirmation code
-    b. Theater number
-    c. ShowTime
-    d. Movie
-    e. Seats, etc.
+    14. If the layout has 50 seats, then only 50 tickets for that ShowTime should be sold in total
 
-17. On that same screen QR code should be generated
+    15. After selecting seats, assume that the customer is able to provide payment, and prompt them
+    for an optional email for a receipt
 
-18. The QR should link
-    https://en.wikipedia.org/wiki/QR_code#URLs
-    to a confirmation web page that shows the same detailed information on a responsive page for
-    a smart phone
+    16. On screen, display a:
+        a. Confirmation code
+        b. Theater number
+        c. ShowTime
+        d. Movie
+        e. Seats, etc.
 
-19. This App displays the
-    a. Movies and ShowTimes +
-    b. The number of seats remaining +
-    c. Ratings
-    d. Movie description
-    e. Runtime, etc. (think “what do I normally see on rotten tomatoes / IMDB / etc.”)
+    17. On that same screen QR code should be generated
 
-20. The App should support a “scan your code” for the above QR code for fast / native display
+    18. The QR should link
+        https://en.wikipedia.org/wiki/QR_code#URLs
+        to a confirmation web page that shows the same detailed information on a responsive page for
+        a smart phone
 
-21. The app should allow for:
-    a. Detailed movie review
-    b. Ratings by users
+    19. This App displays the
+        a. Movies and ShowTimes +
+        b. The number of seats remaining +
+        c. Ratings
+        d. Movie description
+        e. Runtime, etc. (think “what do I normally see on rotten tomatoes / IMDB / etc.”)
 
-22. In order the give a movie a rating, the user must have scanned a ticket QR for that movie - one
-review per purchase max
+    20. The App should support a “scan your code” for the above QR code for fast / native display
 
-23. The App should save all previously scanned QR codes and display them to the user in a list so
-they can show off how often they see movies
+    21. The app should allow for:
+        a. Detailed movie review
+        b. Ratings by users
 
-24. Admins and managers should be able to see a table of all purchases made by:
-    a. Chronological order
-    b. Search
-    c. Filter / etc in some useful way
+    22. In order the give a movie a rating, the user must have scanned a ticket QR for that movie - one
+    review per purchase max
+
+    23. The App should save all previously scanned QR codes and display them to the user in a list so
+    they can show off how often they see movies
+
+    24. Admins and managers should be able to see a table of all purchases made by:
+        a. Chronological order
+        b. Search
+        c. Filter / etc in some useful way

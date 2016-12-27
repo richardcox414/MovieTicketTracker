@@ -1,0 +1,81 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../Content/Site.css" rel="stylesheet" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+    <title>Book Movies</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="//monospaced.github.io/bower-qrcode-generator/js/qrcode.js"></script>
+    <script src="//monospaced.github.io/bower-qrcode-generator/js/qrcode_UTF8.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script src="../../Scripts/angular-touch.js"></script>
+    <script src="../../Scripts/angular-carousel.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js"></script>
+    <script src="../../Scripts/angular-route.js"></script>
+    <script src="../mainApp.js"></script>
+    <script src="../lib/qrcode.js"></script>
+    <script src="../angular-qr.js"></script>
+    <script src="../qrcode.js"></script>
+    <script src="../Controllers/movieCtrl.js"></script>
+    <script src="../Controllers/adminCtrl.js"></script>
+    <script src="../Service/adminService.js"></script>
+    <script src="../Service/movieService.js"></script>
+    <script src="../Service/scrollService.js"></script>
+    <script src="../Controllers/upcomeCtrl.js"></script>
+    <script src="../Controllers/detailsCtrl.js"></script>
+    <script src="../Controllers/showAddCtrl.js"></script>
+    <script src="../Controllers/cartCtrl.js"></script>
+    <script src="../Controllers/saleCtrl.js"></script>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <link href="angular-carousel.css" rel="stylesheet" type="text/css" />
+
+
+
+
+</head>
+<body background="" ng-app="mainApp">
+    <div id="wrapper">
+        <div id="main" class="contanier-fluid">
+            <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="contanier-fluid">
+                    <div class="navbar-brand navbar-brand-centered" id="navbar-brand-centered"> Movie Tickets</div>
+
+                    <ul class="nav navbar-nav pull-right navbar-collapse" style="padding: 0px 8px 0px 8px;">
+                        <li style="padding: 0 4px 0 4px;"><a href="#/" class="btn btn-sm btn-warning"><font color="white">Movies&nbsp;<span class="glyphicon glyphicon-tags"></span></font></a></li>
+                        <li style="padding: 0 2px 0 2px;"><a href="#book" class="btn btn-sm btn-warning"><font color="white">Cart&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span></font></a></li>
+                        <li style="padding: 0 4px 0 2px;"><a href="#admin" class="btn btn-sm btn-warning"><font color="white">Add Movie&nbsp;<span class="glyphicon glyphicon-list-alt"></span></font></a></li>
+                        <li style="padding: 0 4px 0 2px;"><a href="#sched" class="btn btn-sm btn-warning"><font color="white">Schedule&nbsp;<span class="glyphicon glyphicon-list-alt"></span></font></a></li>
+                        <li style="padding: 0 4px 0 2px;"><a href="#sale" class="btn btn-sm btn-warning"><font color="white">Sales&nbsp;<span class="glyphicon glyphicon-list-alt"></span></font></a></li>
+                        <li style="padding: 0 4px 0 2px;"><a href="#thanks" class="btn btn-sm btn-warning"><font color="white">Test&nbsp;<span class="glyphicon glyphicon-list-alt"></span></font></a></li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+        <!--<div class="jumbotron">
+     </div>-->
+
+        <div class="container">
+
+            <div class="row">
+                <div>
+                    <ng-view></ng-view>
+
+                </div>
+
+            </div>
+        </div>
+        <nav class="navbar navbar-default navbar-bottom" role="navigation">
+
+        </nav>
+        <hr />
+
+</body>
+
+</html>
+
